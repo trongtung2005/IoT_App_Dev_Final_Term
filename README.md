@@ -54,6 +54,7 @@ Từ những "nỗi đau" (pain points) thực tế đó, dự án này được
 
 ## 4. Sơ đồ khối (Block Diagram)
 
+![Sơ đồ khối hệ thống](https://drive.google.com/uc?export=view&id=1dphqL6e7rh2Jz6hJsQA7Fu9SsodArX4J)
 
 ### Lưu đồ thuật toán
 - **Phần tiệm cận:** Nhận diện khoảng cách -> Mở nắp bằng Servo -> Phát âm thanh chào -> Đóng nắp.
