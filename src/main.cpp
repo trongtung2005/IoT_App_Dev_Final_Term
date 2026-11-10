@@ -10,5 +10,5 @@ void loop() {
   delay(1000);                       // Chờ 1 giây (1000 ms)
   
   digitalWrite(LED_BUILTIN, LOW);    // Tắt đèn LED
-  delay(1000);                       // Chờ 1 giây (1000 ms)
+  delay(2000);                       // Chờ 1 giây (1000 ms)
 }
