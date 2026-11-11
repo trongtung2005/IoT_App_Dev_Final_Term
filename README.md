@@ -1,11 +1,12 @@
 # 🗑️ HỆ THỐNG QUẢN LÝ RÁC THẢI THÔNG MINH IOT
-Dự án cuối kỳ của môn học: **Phát triền ứng dụng IoT**
+Dự án cuối kỳ của môn học: **Phát triển ứng dụng IoT PHY3640**
 
 Trường: **Trường Đại học Khoa học Tự nhiên, ĐHQGHN (VNU-HUS)**
 
 Giảng viên: **Nguyễn Anh Tuấn**
 
-Sinh viên thực hiện: **Nguyễn Trọng Tùng**
+Sinh viên thực hiện: **Nguyễn Trọng Tùng - 23001638**
+
 ## 1. Đặt bài toán
 
 ### Bối cảnh và Nhu cầu thực tế
