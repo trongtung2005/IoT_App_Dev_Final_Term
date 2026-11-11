@@ -7,11 +7,13 @@ Trong bối cảnh đô thị hóa nhanh chóng, các khu vực sinh hoạt tậ
 - **Tình trạng quá tải cục bộ:** Rác thường xuyên bị vứt đầy tràn ra ngoài trước khi đến giờ thu gom, gây mất mỹ quan, phát sinh mùi hôi thối và thu hút côn trùng, ảnh hưởng trực tiếp đến chất lượng không gian sống.
 - **Rủi ro lây nhiễm chéo:** Tại các không gian công cộng, nắp thùng rác chung là nơi tích tụ hàng triệu vi khuẩn. Đặc biệt sau những đại dịch lớn, người dùng ngày càng có tâm lý e ngại, sợ bẩn khi phải dùng tay mở nắp thùng rác. Điều này vô tình dẫn đến thói quen xấu là vứt rác ngay cạnh thùng thay vì bỏ vào bên trong.
 - **Lãng phí nguồn lực:** Nhân viên vệ sinh thường đi thu gom theo một khung giờ cố định mà không biết trước thùng rác nào đã đầy, thùng nào còn trống, dẫn đến lãng phí thời gian và công sức di chuyển.
+- **Nguy cơ hỏa hoạn tiềm ẩn:** Rác thải tập trung nhiều vật liệu dễ cháy, nếu vô tình có tàn thuốc hoặc nguồn nhiệt rơi vào sẽ rất dễ gây cháy nổ nếu không được phát hiện kịp thời.
 
 Từ những "nỗi đau" (pain points) thực tế đó, dự án này được hình thành nhằm nghiên cứu và chế tạo một hệ thống quản lý rác thải thông minh, tích hợp các công nghệ IoT tiên tiến để giải quyết triệt để vấn đề với 3 mục tiêu cốt lõi:
 1. **Tự động hóa không chạm (Touchless Automation):** Loại bỏ hoàn toàn sự tiếp xúc vật lý giữa người dùng và thùng rác, tạo ra trải nghiệm vứt rác an toàn, hợp vệ sinh, ngăn chặn nguy cơ lây truyền dịch bệnh.
 2. **Tối ưu hóa nguồn lực qua Giám sát thời gian thực:** Thu thập và đo lường chính xác sức chứa của thùng rác mọi lúc, mọi nơi. Hệ thống sẽ tự động phân tích và chỉ đưa ra cảnh báo thu gom khi thực sự cần thiết, giúp tối ưu hóa quy trình làm việc của đội ngũ vệ sinh.
 3. **Giáo dục và Nâng cao ý thức cộng đồng:** Vượt lên trên một thiết bị cơ điện tử thông thường, hệ thống sử dụng tương tác âm thanh trực quan để giao tiếp với người dùng. Những lời cảm ơn hay nhắc nhở trực tiếp sẽ đánh vào tâm lý, dần dần hình thành thói quen và ý thức bảo vệ môi trường cho cộng đồng.
+4. **Bảo đảm an toàn phòng chống cháy nổ:** Theo dõi chất lượng không khí bên trong/xung quanh thùng rác để đưa ra báo động khẩn cấp ngay khi có dấu hiệu phát sinh khói hoặc cháy.
 
 ### Nguồn cảm hứng và Động lực của dự án
 - **Thực trạng nhức nhối tại không gian công cộng:** Bất kỳ ai từng sống trong ký túc xá đều không xa lạ với hình ảnh những bãi rác tự phát mọc lên quanh các thùng rác chưa kịp dọn. Sự bất tiện và mất vệ sinh này là động lực lớn nhất thôi thúc nhóm phát triển tìm kiếm một giải pháp tự động hóa để thay đổi hiện trạng.
@@ -27,6 +29,7 @@ Từ những "nỗi đau" (pain points) thực tế đó, dự án này được
 - **Nhận diện & Đo lường:**
   - `1 x Cảm biến siêu âm HC-SR04`: Nhận diện tay người dùng để mở nắp.
   - `1 x Cảm biến siêu âm HC-SR04`: Đo độ sâu/mức độ đầy của rác trong thùng.
+  - `1 x Cảm biến khí gas/khói MQ135`: Theo dõi nồng độ khói/khí độc để cảnh báo cháy.
 - **Cơ cấu chấp hành:**
   - `1 x Động cơ Servo SG90/MG996R`: Điều khiển đóng/mở nắp thùng.
 - **Giao tiếp âm thanh:**
@@ -37,7 +40,7 @@ Từ những "nỗi đau" (pain points) thực tế đó, dự án này được
 ### Phần mềm
 - **Node-RED:**
   - **Hiển thị:** Biểu đồ Gauge hiển thị phần trăm (%) mức độ đầy của thùng rác.
-  - **Quản lý:** Cảnh báo nhấp nháy đỏ và gửi thông báo từ xa khi cần dọn rác.
+  - **Quản lý:** Cảnh báo nhấp nháy đỏ, gửi thông báo từ xa khi cần dọn rác và khi phát hiện hỏa hoạn.
 - **MQTT Broker:** Mosquitto / HiveMQ / EMQX
 - **Môi trường lập trình:** PlatformIO / VSCode / Arduino IDE
 
@@ -48,6 +51,7 @@ Từ những "nỗi đau" (pain points) thực tế đó, dự án này được
 1. **Kiểm soát nắp không chạm:** Cảm biến siêu âm mặt trước nhận diện tay người dùng tiến lại gần, kích hoạt ESP32 mở nắp thông qua động cơ servo.
 2. **Tương tác âm thanh thông minh:** Tích hợp IC ISD4004 để phát lời chào lịch sự (*"Xin cảm ơn bạn đã vứt rác đúng nơi quy định"*) khi vứt rác, và âm thanh cảnh báo (*"Thùng rác đã đầy, vui lòng dọn dẹp"*) khi rác chạm mốc 100%.
 3. **Giám sát thời gian thực:** Cảm biến siêu âm gắn trên nắp liên tục tính toán khoảng cách đến bề mặt rác và quy đổi thành tỷ lệ phần trăm (%) sức chứa của thùng. Đèn LED trạng thái cung cấp phản hồi trực quan ngay tại chỗ.
+4. Cảnh báo khói/cháy nổ: Cảm biến MQ135 liên tục đọc nồng độ khói/khí gas. Nếu thông số vượt quá ngưỡng an toàn định trước, hệ thống lập tức phát còi báo động qua loa và gửi tín hiệu cảnh báo cháy lên màn hình quản lý.
 4. **Tích hợp Dashboard:** Toàn bộ dữ liệu về mức rác và trạng thái hệ thống được truyền liên tục qua giao thức MQTT tới bảng điều khiển Node-RED để quản lý từ xa và tạo cảnh báo.
 
 ---
