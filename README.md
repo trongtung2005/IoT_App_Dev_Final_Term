@@ -1,5 +1,11 @@
 # 🗑️ HỆ THỐNG QUẢN LÝ RÁC THẢI THÔNG MINH IOT
+Dự án cuối kỳ của môn học: **Phát triền ứng dụng IoT**
 
+Trường: **Trường Đại học Khoa học Tự nhiên, ĐHQGHN (VNU-HUS)**
+
+Giảng viên: **Nguyễn Anh Tuấn**
+
+Sinh viên thực hiện: **Nguyễn Trọng Tùng**
 ## 1. Đặt bài toán
 
 ### Bối cảnh và Nhu cầu thực tế
